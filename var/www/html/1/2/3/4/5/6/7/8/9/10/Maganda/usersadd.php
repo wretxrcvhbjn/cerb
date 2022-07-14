@@ -1,0 +1,136 @@
+<?php require 'inc/_global/config.php'; ?>
+<?php require 'inc/backend/config.php'; ?>
+<?php require 'inc/_global/views/head_start.php'; ?>
+
+<!-- Page JS Plugins CSS -->
+
+<?php require 'inc/_global/views/head_end.php'; ?>
+<?php require 'inc/_global/views/page_start.php'; ?>
+<?php
+    require_once 'config.php';
+?>
+
+<?php 
+	if(isset($_GET['useradd'])) {
+		if(
+			"" != trim($_POST['privatekey']) && 
+			"" != trim($_POST['contact']) && 
+			"" != trim($_POST['serverinfo']) && 
+			"" != trim($_POST['domain']) && 
+			"" != trim($_POST['apicryptkey']) && 
+			"" != trim($_POST['other']) && 
+			"" != trim($_POST['end_subscribe'])
+			)
+		{
+			$database->insert("users", [
+				"privatekey" => $_POST['privatekey'],
+				"contact" => $_POST['contact'],
+				"serverinfo" => $_POST['serverinfo'],
+				"domain" => $_POST['domain'],
+				"apicryptkey" => $_POST['apicryptkey'],
+				"other" => $_POST['other'],
+				"end_subscribe" => $_POST['end_subscribe']
+			]);
+			?>
+			<h5 style="color:green;">Bayi Eklendi!</h5>
+			<?php
+		}
+		else {
+			?>
+			<h5 style="color:red;">Lütfen Bilgileri Eksiksiz Giriniz!</h5>
+			<?php
+		}
+	}
+?>
+
+<!-- Hero -->
+<div class="bg-body-light">
+    <div class="content content-full">
+        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Alt Bayi Ekle</h1>
+        </div>
+   </div>
+</div>
+<!-- END Hero -->
+
+<!-- Page Content -->
+<div class="content">
+    <!-- jQuery Validation (.js-validation class is initialized in js/pages/be_forms_validation.min.js which was auto compiled from _js/pages/be_forms_validation.js) -->
+    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+    <form class="js-validation" action="?useradd" method="post" autocomplete="off">
+        <div class="block block-rounded">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Alt Bayi Ekle</h3>
+            </div>
+            <div class="block-content block-content-full">
+                <div class="">
+                    <!-- Advanced -->
+                    <div class="row items-push">
+                        <div class="col-lg-4">
+                            <p class="text-muted">
+                            </p>
+                        </div>
+                        <div class="col-lg-8 col-xl-5">
+                            <div class="form-group bluredit">
+                                <label for="val-suggestions">Key</label>
+                                <textarea type="text" id="privatekey" name="privatekey" class="form-control" placeholder=""></textarea>
+								<a class="btn" onclick="document.getElementById('privatekey').value=randomString(128);">Key Üret</a>
+                            </div>
+                            <div class="form-group bluredit">
+                                <label for="val-currency">İletişim Bilgisi *</label>
+                                <input type="text" class="form-control" id="contact" name="contact" placeholder="">
+                            </div>
+                            <div class="form-group bluredit">
+                                <label for="val-website">Alt Bayi Adı</label>
+                                <textarea type="text" name="serverinfo" cols="40" rows="5" class="form-control" placeholder=""></textarea>
+                            </div>                            
+							<div class="form-group bluredit">
+                                <label for="val-website">Domain</label>
+                                <input type="text" class="form-control" id="domain" name="domain" placeholder="">
+                            </div>
+                            <div class="form-group bluredit">
+                                <label for="val-phoneus">Api Crypt Key</label>
+                                <input type="text" class="form-control" id="apicryptkey" name="apicryptkey" placeholder="">
+								<a class="btn" onclick="document.getElementById('apicryptkey').value=randomString(13);">Generate</a>
+                            </div>
+                            <div class="form-group bluredit">
+                                <label for="val-digits">Diğer Bilgiler</label>
+                                <textarea type="text" type="text" name="other" cols="40" rows="5"></textarea>
+                            </div>
+                            <div class="form-group bluredit">
+                                <label for="val-number">Süre</label>
+                                <input type="text" class="form-control" id="end_subscribe" name="end_subscribe" placeholder="2021-12-12 örn">
+                            </div>
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-sm btn-light"> 
+                                <i class="fa fa-fw fa-check"></i> Bayi Ekle </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Advanced -->
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- jQuery Validation -->
+</div>
+<!-- END Page Content -->
+
+<?php require 'inc/_global/views/page_end.php'; ?>
+
+<?php require 'inc/_global/views/footer_start.php'; ?>
+
+<!-- Page JS Plugins -->
+
+
+<?php require 'inc/_global/views/footer_end.php'; ?>
+
+<script>
+function randomString(length) {
+    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
+}
+    </script>

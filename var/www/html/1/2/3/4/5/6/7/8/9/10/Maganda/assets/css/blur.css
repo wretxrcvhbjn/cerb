@@ -1,0 +1,17 @@
+/*!
+ * dashmix - v3.2.0
+ * @author pixelcave - https://pixelcave.com
+ * Copyright (c) 2021
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.bluredit{
+  filter: blur(3px);
+}
+.bluredit:hover {
+ filter: blur(0px);
+}

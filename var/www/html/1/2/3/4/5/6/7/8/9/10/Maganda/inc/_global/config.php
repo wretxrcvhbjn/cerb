@@ -1,0 +1,33 @@
+<?php
+
+require 'inc/_classes/Template.php';
+$dm                             = new Template('CerberuS', 'V4', 'assets');
+$dm->author                     = 'pixelcave';
+$dm->robots                     = 'noindex, nofollow';
+$dm->title                      = 'Cerberus V4 - Yönetim Paneli ';
+$dm->description                = 'Cerberus V4 - Yönetim Paneli';
+$dm->og_url_site                = '';
+$dm->og_url_image               = '';
+$dm->theme                      = '';
+$dm->page_loader                = false;
+$dm->cookies                    = false;
+$dm->google_maps_api_key        = '';
+$dm->inc_side_overlay           = '';
+$dm->inc_sidebar                = '';
+$dm->inc_header                 = '';
+$dm->inc_footer                 = '';
+$dm->l_sidebar_left             = true;
+$dm->l_sidebar_mini             = false;
+$dm->l_sidebar_visible_desktop  = true;
+$dm->l_sidebar_visible_mobile   = false;
+$dm->l_sidebar_dark             = false;
+$dm->l_side_overlay_hoverable   = false;
+$dm->l_side_overlay_visible     = false;
+$dm->l_page_overlay             = true;
+$dm->l_side_scroll              = true;
+$dm->l_header_fixed             = true;
+$dm->l_header_style             = 'dark';
+$dm->l_footer_fixed             = false;
+$dm->l_m_content                = '';
+$dm->main_nav_active            = basename($_SERVER['PHP_SELF']);
+$dm->main_nav                   = array();
